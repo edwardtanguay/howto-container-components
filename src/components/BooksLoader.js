@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { FaSpinner } from 'react-icons/fa';
 
-const BookLoader = ({ children }) => {
+export const BooksLoader = ({ children }) => {
 	const [books, setBooks] = useState([]);
 
 	const url = 'http://localhost:3003';
@@ -25,11 +25,15 @@ const BookLoader = ({ children }) => {
 			}
 			{
 				books.length > 0 && (
-					<h3>Books: [{books.length}]</h3>
+					<>
+						{React.Children.map(children, (child => {
+							if (React.isValidElement(child)) {
+								return React.cloneElement(child, { books })
+							}
+						}))}
+					</>
 				)
 			}
 		</>
 	)
 }
-
-export default BookLoader;
