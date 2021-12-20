@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.scss';
 import { FaSpinner } from 'react-icons/fa';
+import axios from 'axios';
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -9,10 +10,9 @@ function App() {
 
 	useEffect(() => {
 		(async () => {
-			const response = await fetch(`${url}/books`);
-			if (response.ok) {
-				const data = await response.json();
-				setBooks(prev => ([...prev, ...data.books]));
+			const response = await axios.get(`${url}/books`);
+			if (response.statusText === 'OK') {
+				setBooks(prev => ([...prev, ...response.data.books]));
 			}
 		})();
 	}, []);
