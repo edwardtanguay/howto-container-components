@@ -1,6 +1,6 @@
 body {
 	padding: 20px;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 	.App {
 		font-size: 1.6rem;
 		h1 {
@@ -24,5 +24,19 @@ body {
 			list-style-type: disc;
 			margin: 0 0 0 30px;
 		}
+		.spinner {
+			color: #aaa;
+			font-size: 5rem;
+			animation: spin infinite 2s linear;
+		}
+
+		@keyframes spin {
+			from {
+				transform: rotate(0deg);
+			}
+			to {
+				transform: rotate(360deg);
+			}
+		}	
 	}
 }

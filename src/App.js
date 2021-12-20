@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.scss';
+import { FaSpinner } from 'react-icons/fa';
 
 function App() {
 	const [books, setBooks] = useState([]);
@@ -11,15 +12,19 @@ function App() {
 			const response = await fetch(`${url}/books`);
 			if (response.ok) {
 				const data = await response.json();
-				setBooks(prev => ([ ...prev, ...data.books ]));
+				setBooks(prev => ([...prev, ...data.books]));
 			}
 		})();
 	}, []);
 	return (
 		<div className="App">
-			Books: [{books.length}]
+			{books.length === 0 && (
+				<FaSpinner className="spinner" />
+			)}
+			{books.length > 0 && (
+				<h3>Books: [{books.length}]</h3>
+			)}
 		</div>
-	);
+	)
 }
-
 export default App;
