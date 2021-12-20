@@ -16,7 +16,7 @@ app.get('/books', (req, res) => {
 				},
 				{
 					"title": "The German Genius",
-					"author": "Peter Watshon"
+					"author": "Peter Watson"
 				},
 				{
 					"title": "Fantasyland",
